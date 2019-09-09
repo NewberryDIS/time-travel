@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter|Lato:100i,300i,400|Libre+Baskerville&display=swap');
+body {
+    background: url('images/wp.png');
+    /* background-position: 70% 50%; */
+    background-attachment: fixed;
+    background-size: cover;
+}
+a { 
+    color: white;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.masonry-container {
+    /* background-color: rgba(214,215,181,0.85); */
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+    padding: 4px;
+    /* font-family: monospace; */
+    color: #efefef;
+}
+
+.masonry {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: stretch;
+    width: 100%;
+    margin: auto;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: stretch;
+    flex-basis: 150px;
+}
+
+.tile {
+    background:rgba(214,215,181,1);
+    color: #27452B;
+    margin: 4px;
+}
