@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Lato:100i,300i,400|Libre+Baskerville&display=swap');
 body {
-    background: url('images/wp.png');
-    /* background-position: 70% 50%; */
+    height: 100%;
+    background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     background-size: cover;
+    background-image: url('images/wp.png');
 }
 a { 
     color: white;
     text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
 }
 .masonry-container {
     /* background-color: rgba(214,215,181,0.85); */
