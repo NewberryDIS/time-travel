@@ -3,6 +3,7 @@ import './masonry.css';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { Travelers } from './data';
+import { BrowserRouter as BrowserRouter, Link, withRouter } from "react-router-dom";
 // images
 import amyWingreen from './images/tr-amyWingreen.png';
 import blackHawk from './images/tr-blackHawk.png';
@@ -12,7 +13,6 @@ import juliaNewberry from './images/tr-juliaNewberry.png';
 import wolfej from './images/wolfej.png';
 import debord from './images/debord.png';
 import deleuze from './images/deleuze.png';
-
 
 let breakPoints = [350, 500, 750];
 const images = {
@@ -31,14 +31,14 @@ export default class App extends React.Component {
             <div className="container">
                 <div className="masonry-container">
                         <Masonry breakPoints={breakPoints}>
-                            {Travelers.map((content, i) => <Tile key={i} content={content} />)}
+                            {Travelers.map((content, i) => <Tile key={i} i={i} />)}
                         </Masonry>
                 </div>
             </div>
         )
     }
 }
-const Tile = ({ content }) => 
+const Tile = ({ i }) => 
     <div className="tile" css={css`
             border: 2px solid #27452B;
             flex-basis: 150px;
@@ -66,10 +66,13 @@ const Tile = ({ content }) =>
                 padding: 25px 25px 5px 25px;
                 width: 150px;
             `} 
-            src={images[content['image']]} alt="person"/>
-        <h2 css={css`font-family: 'Libre Baskerville', serif;`}>{content.name}</h2>
-        <p>{content.desc}</p>
-        <a href={content.image} css={css`
+            src={images[Travelers[i].image]} alt="person"/>
+        <h2 css={css`font-family: 'Libre Baskerville', serif;`}>{Travelers[i]['name']}</h2>
+        <p>{Travelers[i]['desc']}</p>
+        <Link to={{
+            pathname: Travelers[i].image,
+            state: i
+        }} css={css`
             padding: 10px;
             border: 2px solid #C64B2D;
             margin: 15px auto;
@@ -85,7 +88,7 @@ const Tile = ({ content }) =>
                 
                 color: white;
             }
-        `}>Begin your journey</a>
+        `}>{console.log(i)}Begin your journey</Link>
     </div>
 class Masonry extends React.Component {
     constructor(props) {

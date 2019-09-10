@@ -1,34 +1,44 @@
-
+import React from 'react';
 import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { css, jsx, Global } from '@emotion/core'
 import counter from './images/counter.png';
+import wp from './images/wp.png';
 import styled from "@emotion/styled";
 
 const Text = styled.div`
-flex: 1; 
-width: 70%;
-margin: 30px auto;
-background-color: rgba(255,255,255,0.75);
-font-family: 'Lato', sans-serif;
-padding: 25px;
-border: 2px solid black;
-border-radius: 6px;
--webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
-// background:rgba(214,215,181,0.5);
+    flex: 1; 
+    width: 70%;
+    margin: 30px auto;
+    background-color: rgba(255,255,255,0.75);
+    font-family: 'Lato', sans-serif;
+    padding: 25px;
+    border: 2px solid black;
+    border-radius: 6px;
+    -webkit-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 30px 0px rgba(0,0,0,0.75);
 `
-
-function Main(props) {
-    return 	<div css={css`
+class Main extends React.Component {
+    render(){
+    const { match, location, history } = this.props;
+    var bg = location.pathname === '/' ? counter : wp;
+    return 	(<div css={css`
 				width: 50%;
 				height: 80%;
 				margin: 40px auto;
                 display: flex;
                 flex-direction: column;
 			`}>
-			<Text css={css`flex: 1; width: 70%;`}>
+            <Global
+                styles={css`
+                    body {
+                        background-image: url('${bg}') !important;
+
+                    }
+                `}
+            />
+                        <Text css={css`flex: 1; width: 70%;`}>
                 <h1 css={css`
                     text-align: center;
                     line-height: 2.8rem;
@@ -40,7 +50,7 @@ function Main(props) {
                     & p {
                         margin: 0;
                     }
-                `}>
+                `}>{console.log('You are now at ' + location.pathname)}
                     <p css={css`
                         font-size: 4rem;
                     `}>
@@ -80,6 +90,8 @@ function Main(props) {
                 </p>
 				<p css={css`padding: 20px 0 0 0;`}>Help with our transcription crowdsourcing project: NEWBERRY TRANSCRIBE</p>
 			</Text>
-		</div>
+        </div>
+        )
+    }
 }
 export default Main;

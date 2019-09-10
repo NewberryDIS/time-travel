@@ -5,6 +5,7 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    /* background image for '/' is set in main.js via location */
     background-image: url('images/wp.png');
 }
 a { 
@@ -12,13 +13,11 @@ a {
     text-decoration: none;
 }
 .masonry-container {
-    /* background-color: rgba(214,215,181,0.85); */
     width: 80%;
     margin: auto;
     margin-top: 10px;
     text-align: center;
     padding: 4px;
-    /* font-family: monospace; */
     color: #efefef;
 }
 
